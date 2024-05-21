@@ -21,9 +21,10 @@ public class AppUserService {
             .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
-    public AppUser getLoggedInUser(){
+    public AppUserResponse getLoggedInUser(){
         var principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return findByUsername(principal.getUsername());
+        AppUser appUser = findByUsername(principal.getUsername());
+        return new AppUserResponse(appUser.getUsername());
     }
 
     public AppUserResponse register(AppUserRegister appUserRegister){

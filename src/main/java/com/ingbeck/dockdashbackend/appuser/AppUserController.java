@@ -17,7 +17,7 @@ public class AppUserController {
     private final AppUserService appUserService;
 
     @GetMapping("/me")
-    public AppUser getLoggedInUser(){
+    public AppUserResponse getLoggedInUser(){
         return appUserService.getLoggedInUser();
     }
 
