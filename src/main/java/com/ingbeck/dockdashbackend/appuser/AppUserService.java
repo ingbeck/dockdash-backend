@@ -31,6 +31,8 @@ public class AppUserService {
         AppUser appUser = new AppUser();
         appUser.setUsername(appUserRegister.username());
         appUser.setPassword(passwordEncoder.encode(appUserRegister.password()));
+        appUser.setFirstName(appUserRegister.firstName());
+        appUser.setLastName(appUserRegister.lastName());
         appUser = appUserRepository.save(appUser);
         return new AppUserResponse(appUser.getUsername());
     }
